@@ -1,0 +1,50 @@
+_target_: configs.config
+defaults:
+  - _self_
+
+data:
+  path_to_raw_data_report: 'tests/synthetic_data/raw/heart_cleveland.csv'
+  path_to_raw_data: 'synthetic_data/raw/heart_cleveland.csv'
+  path_to_preprocessed_X_train: 'tests/synthetic_data/train/X_train.csv'
+  path_to_preprocessed_y_train: 'tests/synthetic_data/train/y_train.csv'
+  path_to_preprocessed_X_test: 'tests/synthetic_data/test/X_test.csv'
+  path_to_preprocessed_y_test: 'tests/synthetic_data/test/y_test.csv'
+  path_to_predictions: 'tests/synthetic_data/predictions/preds.csv'
+
+features:
+  cat_features:
+    - 'sex'
+    - 'cp'
+    - 'fbs'
+    - 'restecg'
+    - 'exang'
+    - 'slope'
+    - 'ca'
+    - 'thal'
+  num_features:
+    - 'age'
+    - 'trestbps'
+    - 'chol'
+    - 'thalach'
+    - 'oldpeak'
+  target_feature: 'condition'
+
+transformer:
+  path_to_transformer: 'tests/models/transformer.pkl'
+
+model:
+  clf_name: 'KNeighborsClassifier'
+  clf_params: {
+    n_neighbors: 10,
+    weights: 'uniform',
+    metric: 'minkowski'
+  }
+  path_to_model: 'tests/models/models.pkl'
+  n_folds: 5
+  test_size: 0.2
+  random_state: 256
+
+path_to_report: "tests/reports"
+path_to_metrics: 'tests/metrics/metrics.csv'
+
+
