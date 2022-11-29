@@ -7,6 +7,11 @@ author: Oleg Naidovich
 pip installl -r requirements.txt
 ```
 
+### _To get data_
+```
+dvc pull -r gdrive
+```
+
 ### _To run EDA_
 * Find a report at `reports/report.html` or from `ml_prject/` run to generate a new file:
 ```
