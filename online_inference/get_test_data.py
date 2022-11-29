@@ -15,7 +15,7 @@ def gen_invalid_data():
         oldpeak=uniform(11, 25),
         slope=uniform(0, 2),
         ca=[1, 2, 3],
-        thal=uniform(20, 28)
+        thal=uniform(20, 28),
     )
     return data
 
@@ -34,6 +34,6 @@ def gen_valid_data():
         oldpeak=uniform(0, 10),
         slope=randint(0, 2),
         ca=randint(0, 3),
-        thal=randint(0, 2)
+        thal=randint(0, 2),
     )
     return data

@@ -17,33 +17,32 @@ class DataModel(BaseModel):
     ca: Literal[0, 1, 2, 3]
     thal: Literal[0, 1, 2]
 
-
-    @validator('age')
+    @validator("age")
     def age_validator(cls, v):
         if v < 0 or v > 150:
-            raise ValueError('Wrong age value')
+            raise ValueError("Wrong age value")
         return v
 
-    @validator('trestbps')
+    @validator("trestbps")
     def trestbps_validator(cls, v):
         if v < 0 or v > 300:
-            raise ValueError('Wrong trestbps value')
+            raise ValueError("Wrong trestbps value")
         return v
 
-    @validator('chol')
+    @validator("chol")
     def chol_validator(cls, v):
         if v < 0 or v > 100:
-            raise ValueError('Wrong chol value')
+            raise ValueError("Wrong chol value")
         return v
 
-    @validator('thalach')
+    @validator("thalach")
     def thalach_validator(cls, v):
         if v < 0 or v > 300:
-            raise ValueError('Wrong thalach value')
+            raise ValueError("Wrong thalach value")
         return v
 
-    @validator('oldpeak')
+    @validator("oldpeak")
     def oldpeak_validator(cls, v):
         if v < 0 or v > 10:
-            raise ValueError('Wrong oldpeak value')
+            raise ValueError("Wrong oldpeak value")
         return v
