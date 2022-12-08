@@ -3,7 +3,7 @@ from docker.types import Mount
 
 from airflow import DAG
 from airflow.providers.docker.operators.docker import DockerOperator
-from config import DATA_DIR, default_args
+from config import RAW_DATA_DIR, DATA_VOLUME_DIR, default_args
 
 
 with DAG(
@@ -14,12 +14,12 @@ with DAG(
 ) as dag:
     generate = DockerOperator(
         image='airflow-generate-data',
-        command='--output-dir /data/raw/{{ ds }}',
+        command=f'--output-dir {RAW_DATA_DIR}',
         network_mode='bridge',
         task_id='docker-airflow-generate-data',
         do_xcom_push=False,
         auto_remove=True,
-        mounts=[Mount(source=DATA_DIR, target='/data', type='bind')]
+        mounts=[Mount(source=DATA_VOLUME_DIR, target='/data', type='bind')]
     )
 
     generate
