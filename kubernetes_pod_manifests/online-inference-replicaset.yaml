@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: online-inference-replicaset
+  labels:
+    app: online-inference
+spec:
+  replicas: 3
+  selector:
+    matchLabels: 
+      app: online-inference
+  template:
+    metadata:
+      name: online-inference-replicaset
+      labels:
+        app: online-inference
+    spec:
+      containers:
+        - image: olegnai1/mlops:latest
+          name: online-inference
+          ports:
+            - containerPort: 8000
+          resources:
+            requests:
+              memory: "1Gi"
+              cpu: "100m"
+            limits:
+              memory: "1.5Gi"
+              cpu: "300m"
